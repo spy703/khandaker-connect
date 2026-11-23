@@ -1316,6 +1316,9 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   section{padding:14px 0 !important;page-break-inside:avoid;border-block:0 !important;
          background:#fff !important}
   .sec-head{margin-bottom:16px}
+  .promo-strip{border:1px solid #bbb !important;background:#fff !important;box-shadow:none !important;padding:6px 12px}
+  .promo-badge{background:#fff !important;border:1px solid #888;color:#000 !important;box-shadow:none !important}
+  .promo-txt{color:#111 !important} .promo-txt b{color:#000 !important} .promo-cta{color:#555 !important}
   .card,.review,.career,.mentor-lead,.mentor-card,.mod,.step,.fee,.tool,.sched-wrap,
   .rev-summary,.offer,.panel,.contact-card{
     border:1px solid #ccc !important;background:#fff !important;box-shadow:none !important;
@@ -1349,6 +1352,30 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   .foot-grid{grid-template-columns:1.2fr 1fr 1fr 1fr !important}
 }
 
+
+    /* ==== combo package special offer (hero strip) ==== */
+    .promo-strip{ display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap; margin:0 0 20px;
+      padding:8px 18px 8px 9px; border:1px solid rgba(168,240,50,.40); border-radius:999px;
+      background:linear-gradient(90deg,rgba(255,164,0,.18),rgba(168,240,50,.12) 60%,rgba(34,233,255,.10));
+      box-shadow:0 12px 32px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.06);
+      text-decoration:none; transition:border-color .25s,transform .25s,box-shadow .25s; }
+    .promo-strip:hover{ border-color:rgba(168,240,50,.85); transform:translateY(-2px);
+      box-shadow:0 16px 38px rgba(0,0,0,.42), 0 0 26px rgba(168,240,50,.16); }
+    .promo-badge{ font-family:var(--f-ui); font-size:12.5px; font-weight:800; letter-spacing:.06em;
+      color:#08111E; background:linear-gradient(135deg,#FFC24A,#A8F032); padding:6px 14px;
+      border-radius:999px; white-space:nowrap; box-shadow:0 4px 16px rgba(168,240,50,.32); }
+    .promo-txt{ font-size:14px; font-weight:600; color:var(--ink-0); line-height:1.5; }
+    .promo-txt b{ color:var(--lime); font-weight:700; }
+    .promo-cta{ font-family:var(--f-ui); font-size:11.5px; font-weight:700; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--cyan); white-space:nowrap; }
+    .offer-lbl--bn{ letter-spacing:.02em; text-transform:none; font-family:var(--f-body);
+      font-size:13.5px; font-weight:700; color:var(--magenta); }
+    .price-tagline{ margin-top:10px; font-size:12.5px; font-weight:600; color:var(--ink-2); }
+    @media (max-width:640px){
+      .promo-strip{ gap:10px; padding:8px 14px 8px 8px; }
+      .promo-txt{ font-size:13px; }
+      .promo-cta{ display:none; }
+    }
 </style>
 </head>
 <body>
@@ -1476,6 +1503,11 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="eyebrow"><i></i> Admissions Open · 2026</span>
+        <a class="promo-strip" href="#offer" aria-label="কম্বো প্যাকেজ স্পেশাল অফার — ৩০% ডিসকাউন্ট">
+          <span class="promo-badge">৩০% ডিসকাউন্ট</span>
+          <span class="promo-txt">কম্বো প্যাকেজ স্পেশাল অফার — ৪ মডিউল একসাথে মাত্র <b>৳ ১৪,০০০</b></span>
+          <span class="promo-cta">অফার দেখুন</span>
+        </a>
         <h1>ক্যারিয়ার গড়ার সেরা<br><span class="hl">অল-ইন-ওয়ান</span> প্যাকেজ</h1>
         <p class="hero-lead">
           <b>প্রফেশনাল আইটি কম্বো কোর্স</b> — গ্রাফিক্স ডিজাইন, ডিজিটাল মার্কেটিং, অফিস অ্যাপ্লিকেশন ও সাইবার সিকিউরিটি
@@ -1572,7 +1604,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   <div class="wrap">
     <div class="offer" data-reveal>
       <div>
-        <span class="offer-lbl"><svg class="ic" style="font-size:14px"><use href="#i-spark"/></svg> Special Offer</span>
+        <span class="offer-lbl offer-lbl--bn"><svg class="ic" style="font-size:15px"><use href="#i-spark"/></svg> কম্বো প্যাকেজ স্পেশাল অফার</span>
         <h3>কমপ্লিট আইটি কম্বো কোর্স</h3>
         <p>৪টি মেগা মডিউল, প্রজেক্ট ফাইল ও লাইফটাইম সাপোর্ট — এক ছাদের নিচে। পরিচিত ছাত্রদের জন্য কিস্তিতে পেমেন্টের সুবিধাও রয়েছে।</p>
         <ul class="offer-list">
@@ -1589,7 +1621,8 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <div class="price-lbl">কম্বো কোর্স ফি</div>
         <div class="price-old">৳ ২০,০০০</div>
         <div class="price-new">৳ ১৪,০০০<small>টাকা</small></div>
-        <span class="price-badge">30% OFF</span>
+        <span class="price-badge">৩০% ডিসকাউন্ট</span>
+        <div class="price-tagline">শুধু কম্বো প্যাকেজের জন্য</div>
         <div class="price-meta">এককালীন অথবা কিস্তিতে পেমেন্ট করা যাবে</div>
       </div>
     </div>
@@ -1608,7 +1641,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
     <div class="grid-3">
       <!-- COMBO -->
       <article class="card card--featured" data-reveal>
-        <span class="card-badge">Best Value</span>
+        <span class="card-badge">Best Value · ৩০% ছাড়</span>
         <span class="card-ico"><svg class="ic"><use href="#i-layers"/></svg></span>
         <h3>প্রফেশনাল আইটি কম্বো কোর্স</h3>
         <p class="card-desc">গ্রাফিক্স, মার্কেটিং, অফিস অ্যাপ ও সাইবার সিকিউরিটি — এক প্যাকেজে, এক সার্টিফিকেটে।</p>
