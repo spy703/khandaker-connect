@@ -1130,18 +1130,97 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   font-family:var(--f-ui);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 
 /* ============================ 06 · TOOLS ============================ */
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:14px}
+/* ---------- 06 · TOOLS (official app icons) ---------- */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
 .tool{
-  display:flex;align-items:center;gap:12px;
+  display:flex;align-items:center;gap:14px;
   border:1px solid var(--line);border-radius:var(--r-md);background:rgba(12,18,35,.55);
-  padding:15px 16px;transition:transform .25s,border-color .25s,background .25s;
+  padding:16px 16px;transition:transform .25s,border-color .25s,background .25s;
 }
 .tool:hover{transform:translateY(-3px);border-color:var(--line-cyan);background:rgba(16,24,46,.8)}
-.tool-ico{
-  width:38px;height:38px;flex:none;border-radius:11px;display:grid;place-items:center;
-  font-family:var(--f-disp);font-weight:900;font-size:13px;color:var(--cyan);
-  border:1px solid var(--line-cyan);background:var(--cyan-soft);
+.tool .tool-ico{
+  width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;overflow:hidden;
+  background:#fff;border:1px solid rgba(125,170,215,.22);
+  box-shadow:0 10px 20px -14px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .3s cubic-bezier(.2,.75,.3,1),box-shadow .3s,border-color .3s;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
 }
+.tool .tool-ico svg{width:74%;height:74%;display:block}
+/* per-brand colours (official brand palettes) */
+.tool .tool-ico--ps,.tool .tool-ico--ai{background:radial-gradient(circle at 50% 30%,#16233F 0%,#0B1224 70%);border-color:rgba(125,170,215,.34)}
+.tool .tool-ico--ps svg,.tool .tool-ico--ai svg{width:84%;height:84%}
+.tool .tool-ico--ps{--brand:rgba(49,168,255,.85)}
+.tool .tool-ico--ai{--brand:rgba(255,154,0,.85)}
+.tool .tool-ico--canva{--brand:rgba(124,58,232,.8)}
+.tool .tool-ico--canva svg{width:82%;height:82%}
+.tool .tool-ico--meta{background:linear-gradient(135deg,#0081FB 0%,#0768E5 100%);border-color:rgba(8,129,251,.55)}
+.tool .tool-ico--meta svg{fill:#fff;width:68%;height:68%}
+.tool .tool-ico--meta{--brand:rgba(8,129,251,.9)}
+.tool .tool-ico--yt{background:#FF0000;border-color:rgba(255,64,64,.55)}
+.tool .tool-ico--yt svg{fill:#fff;width:54%;height:54%}
+.tool .tool-ico--yt{--brand:rgba(255,47,47,.9)}
+.tool .tool-ico--word svg{fill:#2B579A}
+.tool .tool-ico--word{--brand:rgba(43,87,154,.85)}
+.tool .tool-ico--excel svg{fill:#217346}
+.tool .tool-ico--excel{--brand:rgba(33,115,70,.85)}
+.tool .tool-ico--ppt svg{fill:#D24726}
+.tool .tool-ico--ppt{--brand:rgba(210,71,38,.85)}
+.tool .tool-ico--gw svg{width:66%;height:66%}
+.tool .tool-ico--gw{--brand:rgba(66,133,244,.85)}
+.tool .tool-ico--fiverr{background:#1DBF73;border-color:rgba(29,191,115,.55)}
+.tool .tool-ico--fiverr svg{fill:#fff;width:80%;height:80%}
+.tool .tool-ico--fiverr{--brand:rgba(29,191,115,.9)}
+.tool .tool-ico--upwork{background:#14A800;border-color:rgba(20,168,0,.55)}
+.tool .tool-ico--upwork svg{fill:#fff;width:72%;height:72%}
+.tool .tool-ico--upwork{--brand:rgba(20,168,0,.9)}
+.tool .tool-ico--payoneer svg{fill:#FF4800;width:66%;height:66%}
+.tool .tool-ico--payoneer{--brand:rgba(255,72,0,.85)}
+.tool:hover .tool-ico{
+  transform:translateY(-2px) scale(1.06);
+  border-color:var(--brand,var(--line-cyan));
+  box-shadow:0 0 0 1px var(--brand,rgba(34,233,255,.35)), 0 16px 28px -14px var(--brand,rgba(34,233,255,.45));
+}
+
+/* ---------- inline brand marks (syllabus / course cards / mentor) ---------- */
+.bmark{
+  display:inline-grid;place-items:center;flex:none;vertical-align:-4px;font-style:normal;
+  width:19px;height:19px;border-radius:6px;margin-right:7px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(125,170,215,.18);
+}
+.bmark svg{width:100%;height:100%;display:block}
+.bmark--ps svg{fill:#31A8FF}
+.bmark--ps{background:rgba(49,168,255,.12);border-color:rgba(49,168,255,.35)}
+.bmark--ai svg{fill:#FF9A00}
+.bmark--ai{background:rgba(255,154,0,.12);border-color:rgba(255,154,0,.35)}
+.bmark--canva svg{width:88%;height:88%}
+.bmark--canva{background:rgba(124,58,232,.14);border-color:rgba(124,58,232,.35)}
+.bmark--meta svg{fill:#0866FF}
+.bmark--meta{background:rgba(8,129,251,.12);border-color:rgba(8,129,251,.35)}
+.bmark--yt svg{fill:#FF0000;width:74%;height:74%}
+.bmark--yt{background:rgba(255,47,47,.12);border-color:rgba(255,47,47,.35)}
+.bmark--word svg{fill:#4A7FD0}
+.bmark--word{background:rgba(43,87,154,.16);border-color:rgba(43,87,154,.40)}
+.bmark--excel svg{fill:#2FA46B}
+.bmark--excel{background:rgba(33,115,70,.16);border-color:rgba(33,115,70,.40)}
+.bmark--ppt svg{fill:#E4663C}
+.bmark--ppt{background:rgba(210,71,38,.16);border-color:rgba(210,71,38,.40)}
+.bmark--gw svg{width:80%;height:80%}
+.bmark--gw{background:rgba(66,133,244,.12);border-color:rgba(66,133,244,.35)}
+.bmark--fiverr{width:40px;height:15px;background:none;border-color:transparent;margin-right:6px}
+.bmark--fiverr svg{fill:#1DBF73;width:100%;height:100%}
+.bmark--upwork svg{fill:#14A800}
+.bmark--upwork{background:rgba(20,168,0,.12);border-color:rgba(20,168,0,.35)}
+.bmark--payoneer svg{fill:#FF4800}
+.bmark--payoneer{background:rgba(255,72,0,.12);border-color:rgba(255,72,0,.35)}
+.bmark--fb svg{fill:#1877F2}
+.bmark--fb{background:rgba(24,119,242,.12);border-color:rgba(24,119,242,.35)}
+.bmark--ig svg{fill:#E4405F}
+.bmark--ig{background:rgba(228,64,95,.12);border-color:rgba(228,64,95,.35)}
+.mod li{gap:9px}
+.mod li .bmark{margin-left:-2px}
+.card-list li{gap:9px;flex-wrap:wrap}
+.card-list .bmark{margin-left:-2px}
+.mentor-card .bmark,.mentor-cred .bmark{vertical-align:-5px}
 .tool b{display:block;font-size:14px;color:var(--ink-0);font-weight:600;line-height:1.3}
 .tool span{display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px}
 .tool-note{margin-top:26px;text-align:center;font-size:14px;color:var(--ink-3)}
@@ -1244,10 +1323,18 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   .sec-title,.hero h1,.career h4,.review-who b,.mentor-card b,.tool b{color:#000 !important;text-shadow:none !important}
   .hl{color:#0b6f7d !important}
   /* cyan-on-white is unreadable on paper — darken every accent */
-  .sec-kicker,.sec-kicker b,.review-tag,.tool-ico,.career-ico,.panel-tag,.offer-lbl,
+  .sec-kicker,.sec-kicker b,.review-tag,.career-ico,.panel-tag,.offer-lbl,
   .contact-ico,.foot-col h5{color:#0b6f7d !important}
-  .review-tag,.tool-ico,.career-ico,.career-tag{
+  .review-tag,.career-ico,.career-tag{
     border-color:#9aa7b4 !important;background:none !important}
+  /* brand tiles keep their official colours on paper */
+  .tool-ico{box-shadow:none !important;border:1px solid #c4ccd6 !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tool-ico--ps,.tool-ico--ai{background:#0B1224 !important;border-color:#6b7a90 !important}
+  .bmark{border-color:#c4ccd6 !important;background:none !important;
+    width:15px !important;height:15px !important;margin-right:4px !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .bmark--fiverr{display:none !important}
   .career-tag{color:#4a6b00 !important}
   .rev-score b{color:#000 !important;text-shadow:none !important}
   .price-new{color:#000 !important}.price-old{color:#555 !important}
@@ -1292,6 +1379,29 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.4 1.47 6.5L12 16.6 6.03 19.73 7.5 13.23l-5-4.4 6.6-.57z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+
+  <!-- ============ OFFICIAL BRAND MARKS (app tiles + inline marks) ============ -->
+  <defs>
+    <linearGradient id="kcCanvaG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00C4CC"/><stop offset="1" stop-color="#7D2AE8"/>
+    </linearGradient>
+  </defs>
+  <symbol id="b-photoshop" viewBox="0 0 256 250"><rect fill="#001e36" rx="42.5"/><path fill="#31a8ff" d="M57.644 175.035V65.297q0-1.201 1.031-1.202l1.087-.003l1.858-.02l2.582-.051l8.65-.183l9.275-.172q4.893-.085 9.702-.086q13.05 0 21.982 3.263a38.1 38.1 0 0 1 14.34 8.758a33.6 33.6 0 0 1 7.814 12.108a40.2 40.2 0 0 1 2.405 13.824q0 13.741-6.355 22.669a35.9 35.9 0 0 1-16.6 12.756l-.573.21c-6.973 2.601-14.695 3.541-23.164 3.6l-1.316.004l-1.953-.01l-.985-.014l-1.098-.026l-.662-.026l-.402-.021l-.989-.036l-1.209-.025l-1.82-.013l-.405-.001v34.263a1.366 1.366 0 0 1-1.546 1.546H58.847q-1.204.001-1.203-1.374M80.84 84.703v35.792q2.23.173 4.12.172h5.668a40.3 40.3 0 0 0 11.533-1.727l.746-.233a18.5 18.5 0 0 0 8.759-5.668q3.228-3.807 3.344-10.492l.005-.499c.09-3.322-.774-6.6-2.491-9.445a16 16 0 0 0-7.47-6.097a31.8 31.8 0 0 0-12.537-2.146l-2.178.006l-1.374.012l-1.311.017l-1.85.036l-1.35.038l-.701.026l-.937.044l-.798.049l-.455.036l-.393.038l-.173.02zm123.93 29.284a40.2 40.2 0 0 0-9.458-3.442l-.76-.164a54.3 54.3 0 0 0-11.009-1.363l-.926-.011a22.2 22.2 0 0 0-6.44.773a5.8 5.8 0 0 0-3.35 2.146a5.4 5.4 0 0 0-.858 2.92a4.56 4.56 0 0 0 1.03 2.747a11.7 11.7 0 0 0 3.235 2.637l.372.197a72 72 0 0 0 7.556 3.52a75 75 0 0 1 16.4 7.814a24.94 24.94 0 0 1 8.416 8.845a23.6 23.6 0 0 1 2.49 10.99a24.7 24.7 0 0 1-4.122 14.169a27.1 27.1 0 0 1-11.936 9.53q-7.556 3.32-18.557 3.432l-.762.004a70 70 0 0 1-13.556-1.188l-.956-.186a46.3 46.3 0 0 1-10.905-3.435a2.22 2.22 0 0 1-1.202-1.89v-18.718a1.01 1.01 0 0 1 .43-.945a.83.83 0 0 1 .944.086a45.9 45.9 0 0 0 13.223 5.238a54.5 54.5 0 0 0 12.537 1.632q6.009 0 8.844-1.546a4.86 4.86 0 0 0 2.834-4.465q0-2.23-2.576-4.293q-1.08-.864-3.097-1.88l-.643-.316l-.686-.323l-.36-.164l-.754-.334l-.393-.17l-.82-.344l-.427-.175l-.886-.355l-.46-.18l-.953-.367l-.997-.373a63 63 0 0 1-15.199-7.728a26.2 26.2 0 0 1-8.071-9.016a23.7 23.7 0 0 1-2.49-10.905a24.6 24.6 0 0 1 3.606-12.88c2.7-4.27 6.576-7.67 11.163-9.788q7.555-3.776 18.89-3.779a83.6 83.6 0 0 1 13.224.945a34.7 34.7 0 0 1 9.206 2.49c.473.136.854.485 1.03.945c.117.419.174.852.172 1.288v17.345c.025.41-.172.803-.515 1.03a1.66 1.66 0 0 1-1.478 0"/></symbol>
+  <symbol id="bm-photoshop" viewBox="0 0 256 250"><path fill="#31a8ff" d="M57.644 175.035V65.297q0-1.201 1.031-1.202l1.087-.003l1.858-.02l2.582-.051l8.65-.183l9.275-.172q4.893-.085 9.702-.086q13.05 0 21.982 3.263a38.1 38.1 0 0 1 14.34 8.758a33.6 33.6 0 0 1 7.814 12.108a40.2 40.2 0 0 1 2.405 13.824q0 13.741-6.355 22.669a35.9 35.9 0 0 1-16.6 12.756l-.573.21c-6.973 2.601-14.695 3.541-23.164 3.6l-1.316.004l-1.953-.01l-.985-.014l-1.098-.026l-.662-.026l-.402-.021l-.989-.036l-1.209-.025l-1.82-.013l-.405-.001v34.263a1.366 1.366 0 0 1-1.546 1.546H58.847q-1.204.001-1.203-1.374M80.84 84.703v35.792q2.23.173 4.12.172h5.668a40.3 40.3 0 0 0 11.533-1.727l.746-.233a18.5 18.5 0 0 0 8.759-5.668q3.228-3.807 3.344-10.492l.005-.499c.09-3.322-.774-6.6-2.491-9.445a16 16 0 0 0-7.47-6.097a31.8 31.8 0 0 0-12.537-2.146l-2.178.006l-1.374.012l-1.311.017l-1.85.036l-1.35.038l-.701.026l-.937.044l-.798.049l-.455.036l-.393.038l-.173.02zm123.93 29.284a40.2 40.2 0 0 0-9.458-3.442l-.76-.164a54.3 54.3 0 0 0-11.009-1.363l-.926-.011a22.2 22.2 0 0 0-6.44.773a5.8 5.8 0 0 0-3.35 2.146a5.4 5.4 0 0 0-.858 2.92a4.56 4.56 0 0 0 1.03 2.747a11.7 11.7 0 0 0 3.235 2.637l.372.197a72 72 0 0 0 7.556 3.52a75 75 0 0 1 16.4 7.814a24.94 24.94 0 0 1 8.416 8.845a23.6 23.6 0 0 1 2.49 10.99a24.7 24.7 0 0 1-4.122 14.169a27.1 27.1 0 0 1-11.936 9.53q-7.556 3.32-18.557 3.432l-.762.004a70 70 0 0 1-13.556-1.188l-.956-.186a46.3 46.3 0 0 1-10.905-3.435a2.22 2.22 0 0 1-1.202-1.89v-18.718a1.01 1.01 0 0 1 .43-.945a.83.83 0 0 1 .944.086a45.9 45.9 0 0 0 13.223 5.238a54.5 54.5 0 0 0 12.537 1.632q6.009 0 8.844-1.546a4.86 4.86 0 0 0 2.834-4.465q0-2.23-2.576-4.293q-1.08-.864-3.097-1.88l-.643-.316l-.686-.323l-.36-.164l-.754-.334l-.393-.17l-.82-.344l-.427-.175l-.886-.355l-.46-.18l-.953-.367l-.997-.373a63 63 0 0 1-15.199-7.728a26.2 26.2 0 0 1-8.071-9.016a23.7 23.7 0 0 1-2.49-10.905a24.6 24.6 0 0 1 3.606-12.88c2.7-4.27 6.576-7.67 11.163-9.788q7.555-3.776 18.89-3.779a83.6 83.6 0 0 1 13.224.945a34.7 34.7 0 0 1 9.206 2.49c.473.136.854.485 1.03.945c.117.419.174.852.172 1.288v17.345c.025.41-.172.803-.515 1.03a1.66 1.66 0 0 1-1.478 0"/></symbol>
+  <symbol id="b-illustrator" viewBox="0 0 256 250"><rect fill="#300" rx="42.5"/><path fill="#ff9a00" d="M124.054 149.79h-39.67l-8.072 25.073a2.02 2.02 0 0 1-2.061 1.546H54.158q-1.718 0-1.202-1.89l34.347-98.918q.515-1.545 1.03-3.52c.45-2.292.68-4.62.687-6.955a1.063 1.063 0 0 1 1.202-1.203h27.306q1.2 0 1.374.86l38.983 109.908q.515 1.72-1.03 1.718h-22.326a1.59 1.59 0 0 1-1.717-1.202zm-33.488-21.638H117.7l-.387-1.277l-.621-2.022l-.443-1.42l-.707-2.236l-1.503-4.707l-1.322-4.173l-3.433-10.87a334 334 0 0 1-2.46-8.138l-.628-2.21l-.734-2.613l-1.12-4.05l-.21-.763h-.171a139 139 0 0 1-3.136 12.23l-2.548 8.196l-1.402 4.528l-1.415 4.584q-.383 1.242-.765 2.456l-.76 2.398l-.756 2.342l-.752 2.284l-.748 2.227q-.372 1.1-.743 2.17zm90.501-46.025a12.46 12.46 0 0 1-9.445-3.778a13.6 13.6 0 0 1-3.607-9.789a12.6 12.6 0 0 1 3.864-9.53a13.27 13.27 0 0 1 9.165-3.697l.366.004q6.183 0 9.704 3.692a13.26 13.26 0 0 1 3.52 9.531a13.4 13.4 0 0 1-3.692 9.79a13.18 13.18 0 0 1-9.508 3.79zm-11.85 92.564V92.603q-.001-1.546 1.374-1.546h21.124q1.373 0 1.374 1.546v82.088q0 1.72-1.374 1.718h-20.952q-1.464 0-1.541-1.542z"/></symbol>
+  <symbol id="bm-illustrator" viewBox="0 0 256 250"><path fill="#ff9a00" d="M124.054 149.79h-39.67l-8.072 25.073a2.02 2.02 0 0 1-2.061 1.546H54.158q-1.718 0-1.202-1.89l34.347-98.918q.515-1.545 1.03-3.52c.45-2.292.68-4.62.687-6.955a1.063 1.063 0 0 1 1.202-1.203h27.306q1.2 0 1.374.86l38.983 109.908q.515 1.72-1.03 1.718h-22.326a1.59 1.59 0 0 1-1.717-1.202zm-33.488-21.638H117.7l-.387-1.277l-.621-2.022l-.443-1.42l-.707-2.236l-1.503-4.707l-1.322-4.173l-3.433-10.87a334 334 0 0 1-2.46-8.138l-.628-2.21l-.734-2.613l-1.12-4.05l-.21-.763h-.171a139 139 0 0 1-3.136 12.23l-2.548 8.196l-1.402 4.528l-1.415 4.584q-.383 1.242-.765 2.456l-.76 2.398l-.756 2.342l-.752 2.284l-.748 2.227q-.372 1.1-.743 2.17zm90.501-46.025a12.46 12.46 0 0 1-9.445-3.778a13.6 13.6 0 0 1-3.607-9.789a12.6 12.6 0 0 1 3.864-9.53a13.27 13.27 0 0 1 9.165-3.697l.366.004q6.183 0 9.704 3.692a13.26 13.26 0 0 1 3.52 9.531a13.4 13.4 0 0 1-3.692 9.79a13.18 13.18 0 0 1-9.508 3.79zm-11.85 92.564V92.603q-.001-1.546 1.374-1.546h21.124q1.373 0 1.374 1.546v82.088q0 1.72-1.374 1.718h-20.952q-1.464 0-1.541-1.542z"/></symbol>
+  <symbol id="b-canva" viewBox="0 0 24 24"><path fill="url(#kcCanvaG)" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></symbol>
+  <symbol id="b-meta" viewBox="0 0 24 24"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></symbol>
+  <symbol id="b-youtube" viewBox="7.5 6.5 9 10.5"><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+  <symbol id="b-word" viewBox="0 0 24 24"><path d="M23.004 1.5q.41 0 .703.293t.293.703v19.008q0 .41-.293.703t-.703.293H6.996q-.41 0-.703-.293T6 21.504V18H.996q-.41 0-.703-.293T0 17.004V6.996q0-.41.293-.703T.996 6H6V2.496q0-.41.293-.703t.703-.293zM6.035 11.203l1.442 4.735h1.64l1.57-7.876H9.036l-.937 4.653-1.325-4.5H5.38l-1.406 4.523-.938-4.675H1.312l1.57 7.874h1.641zM22.5 21v-3h-15v3zm0-4.5v-3.75H12v3.75zm0-5.25V7.5H12v3.75zm0-5.25V3h-15v3Z"/></symbol>
+  <symbol id="b-excel" viewBox="0 0 24 24"><path d="M23 1.5q.41 0 .7.3.3.29.3.7v19q0 .41-.3.7-.29.3-.7.3H7q-.41 0-.7-.3-.3-.29-.3-.7V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h5V2.5q0-.41.3-.7.29-.3.7-.3zM6 13.28l1.42 2.66h2.14l-2.38-3.87 2.34-3.8H7.46l-1.3 2.4-.05.08-.04.09-.64-1.28-.66-1.29H2.59l2.27 3.82-2.48 3.85h2.16zM14.25 21v-3H7.5v3zm0-4.5v-3.75H12v3.75zm0-5.25V7.5H12v3.75zm0-5.25V3H7.5v3zm8.25 15v-3h-6.75v3zm0-4.5v-3.75h-6.75v3.75zm0-5.25V7.5h-6.75v3.75zm0-5.25V3h-6.75v3Z"/></symbol>
+  <symbol id="b-powerpoint" viewBox="0 0 24 24"><path d="M13.5 1.5q1.453 0 2.795.375 1.342.375 2.508 1.06 1.166.686 2.12 1.641.956.955 1.641 2.121.686 1.166 1.061 2.508Q24 10.547 24 12q0 1.453-.375 2.795-.375 1.342-1.06 2.508-.686 1.166-1.641 2.12-.955.956-2.121 1.641-1.166.686-2.508 1.061-1.342.375-2.795.375-1.29 0-2.52-.305-1.23-.304-2.337-.884-1.108-.58-2.063-1.418-.955-.838-1.693-1.893H.997q-.411 0-.704-.293T0 17.004V6.996q0-.41.293-.703T.996 6h3.89q.739-1.055 1.694-1.893.955-.837 2.063-1.418 1.107-.58 2.337-.884Q12.21 1.5 13.5 1.5zm.75 1.535v8.215h8.215q-.14-1.64-.826-3.076-.686-1.436-1.782-2.531-1.095-1.096-2.537-1.782-1.441-.685-3.07-.826zm-5.262 7.57q0-.68-.228-1.166-.229-.486-.627-.79-.399-.305-.938-.446-.539-.14-1.172-.14H2.848v7.863h1.84v-2.742H5.93q.574 0 1.119-.17t.978-.493q.434-.322.698-.802.263-.48.263-1.114zM13.5 21q1.172 0 2.262-.287t2.056-.82q.967-.534 1.776-1.278.808-.744 1.418-1.664.61-.92.984-1.986.375-1.067.469-2.227h-9.703V3.035q-1.735.14-3.27.908T6.797 6h4.207q.41 0 .703.293t.293.703v10.008q0 .41-.293.703t-.703.293H6.797q.644.715 1.412 1.271.768.557 1.623.944.855.387 1.781.586Q12.54 21 13.5 21zM5.812 9.598q.575 0 .915.228.34.229.34.838 0 .27-.124.44-.123.17-.31.275-.188.105-.422.146-.234.041-.445.041H4.687V9.598Z"/></symbol>
+  <symbol id="b-google" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></symbol>
+  <symbol id="b-fiverr" viewBox="0 0 24 24"><path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z"/></symbol>
+  <symbol id="b-upwork" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></symbol>
+  <symbol id="b-payoneer" viewBox="0 0 24 24"><path d="M1.474 3.31c.234 1.802 1.035 5.642 1.398 7.263.095.459.201.853.298 1.013.501.865.907-.287.907-.287C5.644 6.616 3.17 3.597 2.38 2.787c-.139-.15-.384-.332-.608-.396-.32-.095-.374.086-.374.236.01.148.065.565.075.682zm21.835-1.463c.31.224 1.386 1.355 0 1.526-1.984.234-5.76.373-12.022 5.61C8.92 10.968 3.607 16.311.76 22.957a.181.181 0 01-.216.106c-.255-.074-.714-.352-.48-1.418.32-1.44 3.201-8.938 10.817-15.552 2.485-2.155 8.416-7.232 12.426-4.245z"/></symbol>
+  <symbol id="b-facebook" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+  <symbol id="b-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
 </svg>
 
 <!-- ============ top utility bar ============ -->
@@ -1502,10 +1612,10 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <h3>প্রফেশনাল আইটি কম্বো কোর্স</h3>
         <p class="card-desc">গ্রাফিক্স, মার্কেটিং, অফিস অ্যাপ ও সাইবার সিকিউরিটি — এক প্যাকেজে, এক সার্টিফিকেটে।</p>
         <ul class="card-list">
-          <li><svg class="ic"><use href="#i-check"/></svg> Adobe Photoshop ও Illustrator</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> Facebook, Instagram ও YouTube মার্কেটিং</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> MS Word, Excel, PowerPoint, Google Workspace</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> Cyber Security ও ফ্রিল্যান্সিং (Fiverr/Upwork)</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--ps" title="Adobe Photoshop" aria-hidden="true"><svg><use href="#bm-photoshop"/></svg></i><i class="bmark bmark--ai" title="Adobe Illustrator" aria-hidden="true"><svg><use href="#bm-illustrator"/></svg></i>Adobe Photoshop ও Illustrator</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--fb" title="Facebook" aria-hidden="true"><svg><use href="#b-facebook"/></svg></i><i class="bmark bmark--ig" title="Instagram" aria-hidden="true"><svg><use href="#b-instagram"/></svg></i><i class="bmark bmark--yt" title="YouTube" aria-hidden="true"><svg><use href="#b-youtube"/></svg></i>Facebook, Instagram ও YouTube মার্কেটিং</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--word" title="Microsoft Word" aria-hidden="true"><svg><use href="#b-word"/></svg></i><i class="bmark bmark--excel" title="Microsoft Excel" aria-hidden="true"><svg><use href="#b-excel"/></svg></i><i class="bmark bmark--ppt" title="Microsoft PowerPoint" aria-hidden="true"><svg><use href="#b-powerpoint"/></svg></i><i class="bmark bmark--gw" title="Google Workspace" aria-hidden="true"><svg><use href="#b-google"/></svg></i>MS Word, Excel, PowerPoint, Google Workspace</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--fiverr" title="Fiverr" aria-hidden="true"><svg><use href="#b-fiverr"/></svg></i><i class="bmark bmark--upwork" title="Upwork" aria-hidden="true"><svg><use href="#b-upwork"/></svg></i>Cyber Security ও ফ্রিল্যান্সিং (Fiverr/Upwork)</li>
           <li><svg class="ic"><use href="#i-check"/></svg> লাইফটাইম সাপোর্ট + সার্টিফিকেট</li>
         </ul>
         <div class="card-foot">
@@ -1525,8 +1635,8 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
           <li><svg class="ic"><use href="#i-check"/></svg> ডিজিটাল মার্কেটিংয়ের মৌলিক ধারণা</li>
           <li><svg class="ic"><use href="#i-check"/></svg> Facebook ও Instagram পেজ পরিচালনা</li>
           <li><svg class="ic"><use href="#i-check"/></svg> কনটেন্ট পরিকল্পনা ও পোস্ট তৈরি</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> Meta Ads Manager ও অডিয়েন্স টার্গেটিং</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> YouTube মার্কেটিং, SEO বেসিক ও AI কপিরাইটিং</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--meta" title="Meta Ads Manager" aria-hidden="true"><svg><use href="#b-meta"/></svg></i>Meta Ads Manager ও অডিয়েন্স টার্গেটিং</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--yt" title="YouTube" aria-hidden="true"><svg><use href="#b-youtube"/></svg></i>YouTube মার্কেটিং, SEO বেসিক ও AI কপিরাইটিং</li>
         </ul>
         <div class="card-foot">
           <span class="price-tag">৳ ৭,০০০<small>সিঙ্গেল মডিউল · ৩ মাস</small></span>
@@ -1767,11 +1877,11 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <h4>প্রফেশনাল গ্রাফিক্স ডিজাইন</h4>
         <p class="mod-out">আউটপুট: ব্র্যান্ড পরিচয় ও প্রিন্ট-ডিজিটাল ফাইল তৈরি</p>
         <ul>
-          <li>Adobe Photoshop — ফটো এডিটিং, রিটাচিং, ম্যানিপুলেশন</li>
-          <li>Adobe Illustrator — লোগো, ভেক্টর আর্ট, টাইপোগ্রাফি</li>
+          <li><i class="bmark bmark--ps" title="Adobe Photoshop" aria-hidden="true"><svg><use href="#bm-photoshop"/></svg></i>Adobe Photoshop — ফটো এডিটিং, রিটাচিং, ম্যানিপুলেশন</li>
+          <li><i class="bmark bmark--ai" title="Adobe Illustrator" aria-hidden="true"><svg><use href="#bm-illustrator"/></svg></i>Adobe Illustrator — লোগো, ভেক্টর আর্ট, টাইপোগ্রাফি</li>
           <li>সোশ্যাল মিডিয়া পোস্টার, ব্যানার, ফ্লায়ার</li>
           <li>বিজনেস কার্ড, আইডি কার্ড, প্রিন্ট রেডি ফাইল</li>
-          <li>Canva Pro দিয়ে দ্রুত প্রফেশনাল ডিজাইন</li>
+          <li><i class="bmark bmark--canva" title="Canva Pro" aria-hidden="true"><svg><use href="#b-canva"/></svg></i>Canva Pro দিয়ে দ্রুত প্রফেশনাল ডিজাইন</li>
         </ul>
       </article>
 
@@ -1780,9 +1890,9 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <h4>ডিজিটাল মার্কেটিং ও ব্র্যান্ডিং</h4>
         <p class="mod-out">আউটপুট: একটি চালু ব্র্যান্ড পেজ ও ক্যাম্পেইন প্ল্যান</p>
         <ul>
-          <li>Facebook ও Instagram মার্কেটিং, পেজ অপটিমাইজেশন</li>
-          <li>Meta Ads Manager — টার্গেটেড ক্যাম্পেইন ও পিক্সেল</li>
-          <li>YouTube মার্কেটিং, চ্যানেল কাস্টমাইজেশন, ভিডিও SEO</li>
+          <li><i class="bmark bmark--fb" title="Facebook" aria-hidden="true"><svg><use href="#b-facebook"/></svg></i><i class="bmark bmark--ig" title="Instagram" aria-hidden="true"><svg><use href="#b-instagram"/></svg></i>Facebook ও Instagram মার্কেটিং, পেজ অপটিমাইজেশন</li>
+          <li><i class="bmark bmark--meta" title="Meta Ads Manager" aria-hidden="true"><svg><use href="#b-meta"/></svg></i>Meta Ads Manager — টার্গেটেড ক্যাম্পেইন ও পিক্সেল</li>
+          <li><i class="bmark bmark--yt" title="YouTube" aria-hidden="true"><svg><use href="#b-youtube"/></svg></i>YouTube মার্কেটিং, চ্যানেল কাস্টমাইজেশন, ভিডিও SEO</li>
           <li>On-Page ও Off-Page SEO বেসিক</li>
           <li>কনটেন্ট মার্কেটিং ও ChatGPT দিয়ে কপিরাইটিং</li>
         </ul>
@@ -1793,10 +1903,10 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <h4>অফিস অ্যাপ্লিকেশন ও আইটি ফান্ডামেন্টালস</h4>
         <p class="mod-out">আউটপুট: অফিস-রেডি ডকুমেন্ট, রিপোর্ট ও প্রেজেন্টেশন</p>
         <ul>
-          <li>Microsoft Word — সিভি, লেটার, রিপোর্ট</li>
-          <li>Microsoft Excel — অ্যাডভান্সড ফর্মুলা, ডাটা এন্ট্রি, চার্ট</li>
-          <li>PowerPoint — কর্পোরেট প্রেজেন্টেশন ও অ্যানিমেশন</li>
-          <li>Google Workspace — Docs, Sheets, Drive, Forms</li>
+          <li><i class="bmark bmark--word" title="Microsoft Word" aria-hidden="true"><svg><use href="#b-word"/></svg></i>Microsoft Word — সিভি, লেটার, রিপোর্ট</li>
+          <li><i class="bmark bmark--excel" title="Microsoft Excel" aria-hidden="true"><svg><use href="#b-excel"/></svg></i>Microsoft Excel — অ্যাডভান্সড ফর্মুলা, ডাটা এন্ট্রি, চার্ট</li>
+          <li><i class="bmark bmark--ppt" title="Microsoft PowerPoint" aria-hidden="true"><svg><use href="#b-powerpoint"/></svg></i>PowerPoint — কর্পোরেট প্রেজেন্টেশন ও অ্যানিমেশন</li>
+          <li><i class="bmark bmark--gw" title="Google Workspace" aria-hidden="true"><svg><use href="#b-google"/></svg></i>Google Workspace — Docs, Sheets, Drive, Forms</li>
           <li>বাংলা ও ইংরেজি দ্রুত টাইপিং (বিজয় ও অভ্র)</li>
         </ul>
       </article>
@@ -1808,9 +1918,9 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
         <ul>
           <li>সোশ্যাল মিডিয়া ও ইমেইল সিকিউরিটি</li>
           <li>ফিশিং, ম্যালওয়্যার সচেতনতা ও ডেটা প্রোটেকশন</li>
-          <li>Fiverr ও Upwork — অ্যাকাউন্ট তৈরি ও গিগ অপটিমাইজেশন</li>
+          <li><i class="bmark bmark--fiverr" title="Fiverr" aria-hidden="true"><svg><use href="#b-fiverr"/></svg></i><i class="bmark bmark--upwork" title="Upwork" aria-hidden="true"><svg><use href="#b-upwork"/></svg></i>Fiverr ও Upwork — অ্যাকাউন্ট তৈরি ও গিগ অপটিমাইজেশন</li>
           <li>Out of Marketplace ক্লায়েন্ট হান্টিং কৌশল</li>
-          <li>Payoneer ও লোকাল ব্যাংকে নিরাপদ পেমেন্ট</li>
+          <li><i class="bmark bmark--payoneer" title="Payoneer" aria-hidden="true"><svg><use href="#b-payoneer"/></svg></i>Payoneer ও লোকাল ব্যাংকে নিরাপদ পেমেন্ট</li>
         </ul>
       </article>
     </div>
@@ -1844,7 +1954,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
           <li><svg class="ic"><use href="#i-check"/></svg> অফিস অ্যাপ্লিকেশন ও এক্সেল অটোমেশন সার্টিফায়েড ট্রেনার</li>
           <li><svg class="ic"><use href="#i-check"/></svg> ব্র্যান্ড ও প্রিন্ট ডিজাইনে ২০০+ প্রজেক্ট ডেলিভারি</li>
           <li><svg class="ic"><use href="#i-check"/></svg> উদ্ভোক্তা প্রশিক্ষণে ১৫০০+ ঘণ্টা</li>
-          <li><svg class="ic"><use href="#i-check"/></svg> Fiverr / Upwork অফিসিয়াল ট্রেনিং সার্টিফায়েড</li>
+          <li><svg class="ic"><use href="#i-check"/></svg> <i class="bmark bmark--fiverr" title="Fiverr" aria-hidden="true"><svg><use href="#b-fiverr"/></svg></i><i class="bmark bmark--upwork" title="Upwork" aria-hidden="true"><svg><use href="#b-upwork"/></svg></i>Fiverr / Upwork অফিসিয়াল ট্রেনিং সার্টিফায়েড</li>
         </ul>
         <div class="mentor-stats">
           <div><b>১২+</b><span>বছরের অভিজ্ঞতা</span></div>
@@ -1858,7 +1968,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
           <span class="ava" aria-hidden="true">সা</span>
           <div>
             <b>সাব্বির আহমেদ — গ্রাফিক্স মেন্টর</b>
-            <span>Photoshop ও Illustrator বিশেষজ্ঞ। ব্র্যান্ড পরিচয় ও প্রিন্ট ফাইল তৈরিতে ৮ বছরের অভিজ্ঞতা।</span>
+            <span><i class="bmark bmark--ps" title="Adobe Photoshop" aria-hidden="true"><svg><use href="#bm-photoshop"/></svg></i>Photoshop ও <i class="bmark bmark--ai" title="Adobe Illustrator" aria-hidden="true"><svg><use href="#bm-illustrator"/></svg></i>Illustrator বিশেষজ্ঞ। ব্র্যান্ড পরিচয় ও প্রিন্ট ফাইল তৈরিতে ৮ বছরের অভিজ্ঞতা।</span>
             <em>মডিউল ০১</em>
           </div>
         </article>
@@ -1867,7 +1977,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
           <span class="ava" aria-hidden="true">তা</span>
           <div>
             <b>তানভীর রহমান — মার্কেটিং মেন্টর</b>
-            <span>Meta Ads ও কনটেন্ট স্ট্র্যাটেজি বিশেষজ্ঞ। লাইভ ক্যাম্পেইন ও অডিয়েন্স টার্গেটিং শেখান।</span>
+            <span><i class="bmark bmark--meta" title="Meta Ads Manager" aria-hidden="true"><svg><use href="#b-meta"/></svg></i>Meta Ads ও কনটেন্ট স্ট্র্যাটেজি বিশেষজ্ঞ। লাইভ ক্যাম্পেইন ও অডিয়েন্স টার্গেটিং শেখান।</span>
             <em>মডিউল ০২</em>
           </div>
         </article>
@@ -1876,7 +1986,7 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
           <span class="ava" aria-hidden="true">না</span>
           <div>
             <b>নাসরিন সুলতানা — অফিস ও সিকিউরিটি মেন্টর</b>
-            <span>MS Office, Google Workspace এবং ডিজিটাল সিকিউরিটি ফাউন্ডেশনে বিশেষজ্ঞ।</span>
+            <span>MS Office, <i class="bmark bmark--gw" title="Google Workspace" aria-hidden="true"><svg><use href="#b-google"/></svg></i>Google Workspace এবং ডিজিটাল সিকিউরিটি ফাউন্ডেশনে বিশেষজ্ঞ।</span>
             <em>মডিউল ০৩ ও ০৪</em>
           </div>
         </article>
@@ -1895,18 +2005,18 @@ a.kc-btn{display:inline-flex;align-items:center;justify-content:center;text-deco
     </header>
 
     <div class="tool-grid">
-      <div class="tool" data-reveal><span class="tool-ico">Ps</span><div><b>Adobe Photoshop</b><span>ফটো এডিটিং ও রিটাচিং</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Ai</span><div><b>Adobe Illustrator</b><span>লোগো ও ভেক্টর আর্ট</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Cv</span><div><b>Canva Pro</b><span>দ্রুত ডিজাইন ও টেমপ্লেট</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Fb</span><div><b>Meta Ads Manager</b><span>ক্যাম্পেইন ও পিক্সেল</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Yt</span><div><b>YouTube Studio</b><span>চ্যানেল ও ভিডিও SEO</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">W</span><div><b>MS Word</b><span>সিভি, লেটার ও রিপোর্ট</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">X</span><div><b>MS Excel</b><span>ফর্মুলা, ডেটা ও চার্ট</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Pp</span><div><b>MS PowerPoint</b><span>কর্পোরেট প্রেজেন্টেশন</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Gw</span><div><b>Google Workspace</b><span>Docs, Sheets, Drive ও Forms</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Fi</span><div><b>Fiverr</b><span>গিগ তৈরি ও অপটিমাইজেশন</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Up</span><div><b>Upwork</b><span>প্রোফাইল ও ক্লায়েন্ট হান্টিং</span></div></div>
-      <div class="tool" data-reveal><span class="tool-ico">Py</span><div><b>Payoneer</b><span>নিরাপদ পেমেন্ট গ্রহণ</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--ps" aria-hidden="true"><svg><use href="#b-photoshop"/></svg></span><div><b>Adobe Photoshop</b><span>ফটো এডিটিং ও রিটাচিং</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--ai" aria-hidden="true"><svg><use href="#b-illustrator"/></svg></span><div><b>Adobe Illustrator</b><span>লোগো ও ভেক্টর আর্ট</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--canva" aria-hidden="true"><svg><use href="#b-canva"/></svg></span><div><b>Canva Pro</b><span>দ্রুত ডিজাইন ও টেমপ্লেট</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--meta" aria-hidden="true"><svg><use href="#b-meta"/></svg></span><div><b>Meta Ads Manager</b><span>ক্যাম্পেইন ও পিক্সেল</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--yt" aria-hidden="true"><svg><use href="#b-youtube"/></svg></span><div><b>YouTube Studio</b><span>চ্যানেল ও ভিডিও SEO</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--word" aria-hidden="true"><svg><use href="#b-word"/></svg></span><div><b>MS Word</b><span>সিভি, লেটার ও রিপোর্ট</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--excel" aria-hidden="true"><svg><use href="#b-excel"/></svg></span><div><b>MS Excel</b><span>ফর্মুলা, ডেটা ও চার্ট</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--ppt" aria-hidden="true"><svg><use href="#b-powerpoint"/></svg></span><div><b>MS PowerPoint</b><span>কর্পোরেট প্রেজেন্টেশন</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--gw" aria-hidden="true"><svg><use href="#b-google"/></svg></span><div><b>Google Workspace</b><span>Docs, Sheets, Drive ও Forms</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--fiverr" aria-hidden="true"><svg><use href="#b-fiverr"/></svg></span><div><b>Fiverr</b><span>গিগ তৈরি ও অপটিমাইজেশন</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--upwork" aria-hidden="true"><svg><use href="#b-upwork"/></svg></span><div><b>Upwork</b><span>প্রোফাইল ও ক্লায়েন্ট হান্টিং</span></div></div>
+      <div class="tool" data-reveal><span class="tool-ico tool-ico--payoneer" aria-hidden="true"><svg><use href="#b-payoneer"/></svg></span><div><b>Payoneer</b><span>নিরাপদ পেমেন্ট গ্রহণ</span></div></div>
     </div>
 
     <p class="tool-note" data-reveal>
