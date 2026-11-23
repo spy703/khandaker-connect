@@ -1,0 +1,93 @@
+name: Deploy website to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment_retry.outputs.page_url || steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate favicons and web app manifest
+        run: |
+          set -e
+          python3 -m pip install --quiet --disable-pip-version-check --break-system-packages pillow || python3 -m pip install --quiet --disable-pip-version-check pillow || true
+          python3 - <<'PY'
+          import base64, re, os, json
+          html = open('index.html', encoding='utf-8').read()
+          m = re.search(r'href="data:image/png;base64,([A-Za-z0-9+/=]+)"', html)
+          if not m:
+              print('inline favicon not found - skipping')
+              raise SystemExit(0)
+          data = base64.b64decode(m.group(1))
+          os.makedirs('assets', exist_ok=True)
+          open('assets/favicon-64.png', 'wb').write(data)
+          try:
+              from PIL import Image
+              im = Image.open('assets/favicon-64.png').convert('RGBA')
+              for size in (16, 32, 48, 192, 512):
+                  im.resize((size, size), Image.LANCZOS).save('assets/favicon-{}.png'.format(size))
+              im.resize((180, 180), Image.LANCZOS).save('assets/apple-touch-icon.png')
+          except Exception as exc:
+              print('resize unavailable, copying original icon:', exc)
+              for size in (16, 32, 48, 192, 512):
+                  open('assets/favicon-{}.png'.format(size), 'wb').write(data)
+              open('assets/apple-touch-icon.png', 'wb').write(data)
+          manifest = {
+              "name": "Khandaker Connect Service Hub",
+              "short_name": "Khandaker Connect",
+              "start_url": ".",
+              "display": "standalone",
+              "background_color": "#04060E",
+              "theme_color": "#04060E",
+              "icons": [
+                  {"src": "assets/favicon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png"}
+              ]
+          }
+          open('site.webmanifest', 'w', encoding='utf-8').write(json.dumps(manifest, ensure_ascii=False, indent=2))
+          print('favicon assets + manifest generated')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A assets site.webmanifest
+          if ! git diff --cached --quiet; then
+            git commit -m "Add favicon assets and web app manifest"
+            git push origin HEAD:main
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
